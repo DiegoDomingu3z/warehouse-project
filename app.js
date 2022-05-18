@@ -16,7 +16,7 @@ let guesses = 0
     function startGame(){
         let index = Math.floor(Math.random()*currentPackages.length)
         console.log(index)
-        currentPackages[index].found = true
+        currentPackages[index].missing = true
         console.log('which box is missing', currentPackages[index]);
         missingPackage = currentPackages[index]
     }
@@ -27,7 +27,7 @@ let guesses = 0
         let template = ''
         currentPackages.forEach(package => {
          template += `
-             <div class="col-md-3  m-5 p-3 bg-light" onclick="accuse(${package.TrackingNumber})">
+             <div class="col-md-3  m-5 p-3 bg-light" onclick="foundP(${package.TrackingNumber})">
              <img class="img-fluid" src="${package.image}" alt="">
              <h3 class="text-center">${package.to}</h3>
               <p class="text-center"><b>${package.trackingNumber}</b></p>
@@ -39,7 +39,7 @@ let guesses = 0
       }
 
       function drawScore(){
-          document.getElementById('guess-count').innerHTML = 'current guesses:' + guesses
+          document.getElementById('guess-count').innerText = 'current guesses: ' + guesses
       }
 
       
@@ -68,7 +68,8 @@ let guesses = 0
       }
 
       function guess(attribute){
-        guesses ++
+        
+        guesses++
         let filteredPackages = currentPackages.filter(v => v[attribute] == missingPackage[attribute])
         console.log(filteredPackages);
         currentPackages = filteredPackages
@@ -88,5 +89,5 @@ let guesses = 0
 
          
 
-drawPackages()
-startGame()
+          startGame()
+          drawPackages()
