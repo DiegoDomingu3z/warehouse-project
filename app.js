@@ -16,7 +16,7 @@ let guesses = 0
     function startGame(){
         let index = Math.floor(Math.random()*currentPackages.length)
         console.log(index)
-        currentPackages[index].missing = true
+        currentPackages[index].trackingNumber = true
         console.log('which box is missing', currentPackages[index]);
         missingPackage = currentPackages[index]
     }
@@ -63,8 +63,7 @@ let guesses = 0
           let fragilePackages = currentPackages.filter( p => p.fragile == true)
           console.log(fragilePackages);
           currentPackages = fragilePackages
-
-          drawPackages()
+drawPackages()
       }
 
       function guess(attribute){
@@ -91,3 +90,22 @@ let guesses = 0
 
           startGame()
           drawPackages()
+
+
+
+let num = [1,2,3,4,5,6,7,8,9,10]
+
+  
+function number(num){
+    if (num % 2 == 0) {
+        return even
+    } else {
+        return odd
+    };
+}
+
+number()
+
+
+            
+    
